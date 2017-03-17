@@ -12,20 +12,31 @@ import UIKit
 class PhotoToPdfViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-    var image: UIImage?
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var pdfFilePath: String?
+
+    var image: UIImage?
     
     // MARK: - Actions
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    @IBAction func convertToPdfTapped(_ sender: UIButton) {
+        self.spinner.startAnimating()
+        self.performSelector(inBackground: #selector(convert), with: nil)
+    }
+    
+    func convert() {
         self.pdfFilePath = nil
         if let path = self.createPdf() {
             self.pdfFilePath = path
-            return true
+            self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
         } else {
-            return false
+            fatalError()
         }
+    }
+    
+    func navigate() {
+        self.performSegue(withIdentifier: "PdfPreview", sender: nil)
     }
     
     // MARK: - Private functions
@@ -71,6 +82,10 @@ class PhotoToPdfViewController: UIViewController {
         super.viewDidLoad()
 
         self.imageView.image = self.image
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.spinner.stopAnimating()
     }
 
 }
