@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLo-IS-9LX">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestImageToPdf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,129 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6r-ZG-meW">
+                                <rect key="frame" x="170" y="318" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Adj-6s-866"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="G6r-ZG-meW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="80S-r3-QBF"/>
+                            <constraint firstItem="G6r-ZG-meW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PB0-h6-LZ9"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qcf-Lq-CuS"/>
+                    <connections>
+                        <segue destination="wqz-VZ-pbB" kind="show" identifier="PhotoToPdf" id="PsJ-QL-dON"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="881" y="449"/>
+        </scene>
+        <!--Photo To Pdf View Controller-->
+        <scene sceneID="LRd-nV-nJo">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOw-sl-HM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="wqz-VZ-pbB" customClass="PhotoToPdfViewController" customModule="TestImageToPdf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q7U-8u-VMM"/>
+                        <viewControllerLayoutGuide type="bottom" id="TRZ-QR-qRA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PpN-Hm-rjm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MyU-CT-bbh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="573"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-lb-gWs">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="js2-D1-ne2"/>
+                                </constraints>
+                                <state key="normal" title="Convert to PDF"/>
+                                <connections>
+                                    <segue destination="KbD-6M-Utx" kind="show" id="4IZ-wJ-Ghz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AeJ-lb-gWs" secondAttribute="trailing" id="EOl-Ig-492"/>
+                            <constraint firstItem="MyU-CT-bbh" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="OSz-Tz-z5y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MyU-CT-bbh" secondAttribute="trailing" constant="-16" id="OhQ-Nx-cMJ"/>
+                            <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="AeJ-lb-gWs" secondAttribute="bottom" id="bmF-rz-lc3"/>
+                            <constraint firstItem="MyU-CT-bbh" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leadingMargin" constant="-16" id="if5-7N-vYi"/>
+                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="top" secondItem="MyU-CT-bbh" secondAttribute="bottom" id="jqr-MG-OgE"/>
+                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="qoe-pz-6OX"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="MyU-CT-bbh" id="QPs-HC-hC8"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1648.8" y="449.32533733133437"/>
+        </scene>
+        <!--Pdf Preview View Controller-->
+        <scene sceneID="PWN-yP-pZL">
+            <objects>
+                <viewController id="KbD-6M-Utx" customClass="PdfPreviewViewController" customModule="TestImageToPdf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PC1-c9-ztG"/>
+                        <viewControllerLayoutGuide type="bottom" id="QqK-gf-1Xa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cBF-dZ-Bom">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-Rd-LXx">
+                                <rect key="frame" x="16" y="64" width="343" height="559"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ImT-Rd-LXx" firstAttribute="trailing" secondItem="cBF-dZ-Bom" secondAttribute="trailingMargin" id="Ygf-qi-goO"/>
+                            <constraint firstItem="QqK-gf-1Xa" firstAttribute="top" secondItem="ImT-Rd-LXx" secondAttribute="bottom" id="aO1-dR-MXO"/>
+                            <constraint firstItem="ImT-Rd-LXx" firstAttribute="top" secondItem="PC1-c9-ztG" secondAttribute="bottom" id="bio-cA-pTz"/>
+                            <constraint firstItem="ImT-Rd-LXx" firstAttribute="leading" secondItem="cBF-dZ-Bom" secondAttribute="leadingMargin" id="tl2-DJ-V06"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="ImT-Rd-LXx" id="SxP-s6-7Vz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YV1-G1-taw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2394" y="448"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qvQ-In-gLG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TLo-IS-9LX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BP4-tT-jcS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="C5n-1r-EQ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXN-SA-D1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="451"/>
         </scene>
     </scenes>
 </document>

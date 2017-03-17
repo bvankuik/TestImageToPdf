@@ -12,6 +12,8 @@
 		89024DC51E7BEA400066F412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89024DC31E7BEA400066F412 /* Main.storyboard */; };
 		89024DC71E7BEA400066F412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89024DC61E7BEA400066F412 /* Assets.xcassets */; };
 		89024DCA1E7BEA400066F412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89024DC81E7BEA400066F412 /* LaunchScreen.storyboard */; };
+		89024DD21E7BEEA80066F412 /* PhotoToPdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */; };
+		89024DD41E7BEEF60066F412 /* PdfPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		89024DC61E7BEA400066F412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89024DC91E7BEA400066F412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89024DCB1E7BEA400066F412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoToPdfViewController.swift; sourceTree = "<group>"; };
+		89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PdfPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				89024DBF1E7BEA400066F412 /* AppDelegate.swift */,
 				89024DC11E7BEA400066F412 /* ViewController.swift */,
+				89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */,
+				89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */,
 				89024DC31E7BEA400066F412 /* Main.storyboard */,
 				89024DC61E7BEA400066F412 /* Assets.xcassets */,
 				89024DC81E7BEA400066F412 /* LaunchScreen.storyboard */,
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					89024DBB1E7BEA400066F412 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MH8GQLL8BR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89024DD41E7BEEF60066F412 /* PdfPreviewViewController.swift in Sources */,
 				89024DC21E7BEA400066F412 /* ViewController.swift in Sources */,
 				89024DC01E7BEA400066F412 /* AppDelegate.swift in Sources */,
+				89024DD21E7BEEA80066F412 /* PhotoToPdfViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MH8GQLL8BR;
 				INFOPLIST_FILE = TestImageToPdf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.dutchvirtual.TestImageToPdf;
@@ -272,6 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MH8GQLL8BR;
 				INFOPLIST_FILE = TestImageToPdf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.dutchvirtual.TestImageToPdf;
