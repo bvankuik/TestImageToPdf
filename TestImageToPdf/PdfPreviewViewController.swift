@@ -13,12 +13,32 @@ import WebKit
 class PdfPreviewViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+    private var shareButton: UIBarButtonItem!
+
     var pdfFilePath: String?
     
     // MARK: - WKNavigationDelegate
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         NSLog("didFinishNavigation")
+    }
+    
+    // MARK: - Actions
+    
+    func share() {
+        guard let path = self.pdfFilePath else {
+            return
+        }
+        
+        let fileURL = NSURL(fileURLWithPath: path)
+        let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     // MARK: - View cycle
@@ -35,8 +55,10 @@ class PdfPreviewViewController: UIViewController, WKNavigationDelegate {
         }
         
         let url = URL(fileURLWithPath: path)
-//        self.webView.load(request: URLRequest(url: url))
         self.webView.loadRequest(URLRequest(url: url))
+        
+        self.shareButton = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share))
+        self.navigationItem.rightBarButtonItem = self.shareButton
     }
 
 }
