@@ -61,15 +61,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MyU-CT-bbh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LEl-ic-SBA">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-lb-gWs">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-lb-gWs">
+                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="js2-D1-ne2"/>
@@ -83,12 +79,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AeJ-lb-gWs" secondAttribute="trailing" id="EOl-Ig-492"/>
-                            <constraint firstItem="MyU-CT-bbh" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="OSz-Tz-z5y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MyU-CT-bbh" secondAttribute="trailing" constant="-16" id="OhQ-Nx-cMJ"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="aQi-2Q-qo8"/>
                             <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="AeJ-lb-gWs" secondAttribute="bottom" id="bmF-rz-lc3"/>
-                            <constraint firstItem="MyU-CT-bbh" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leadingMargin" constant="-16" id="if5-7N-vYi"/>
-                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="top" secondItem="MyU-CT-bbh" secondAttribute="bottom" id="jqr-MG-OgE"/>
                             <constraint firstItem="AeJ-lb-gWs" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="qoe-pz-6OX"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerY" secondItem="PpN-Hm-rjm" secondAttribute="centerY" id="rT9-Ey-BvT"/>
                         </constraints>
@@ -96,7 +88,7 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="MyU-CT-bbh" id="QPs-HC-hC8"/>
+                        <outlet property="convertToPdfButton" destination="AeJ-lb-gWs" id="RNM-zJ-SSX"/>
                         <outlet property="spinner" destination="LEl-ic-SBA" id="AGh-ov-tzJ"/>
                         <segue destination="KbD-6M-Utx" kind="show" identifier="PdfPreview" id="Pi0-rn-7L2"/>
                     </connections>
