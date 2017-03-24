@@ -61,6 +61,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LS7-8c-zpJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LEl-ic-SBA">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
@@ -79,23 +82,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AeJ-lb-gWs" secondAttribute="trailing" id="EOl-Ig-492"/>
+                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" placeholder="YES" id="L6F-5W-h5X"/>
+                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="W82-N0-DcD"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="aQi-2Q-qo8"/>
                             <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="AeJ-lb-gWs" secondAttribute="bottom" id="bmF-rz-lc3"/>
+                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="top" secondItem="LS7-8c-zpJ" secondAttribute="bottom" id="dUn-EG-t9g"/>
+                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="q9a-m8-hPd"/>
                             <constraint firstItem="AeJ-lb-gWs" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="qoe-pz-6OX"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerY" secondItem="PpN-Hm-rjm" secondAttribute="centerY" id="rT9-Ey-BvT"/>
+                            <constraint firstAttribute="trailing" secondItem="LS7-8c-zpJ" secondAttribute="trailing" placeholder="YES" id="uQv-nx-DbM"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="convertToPdfButton" destination="AeJ-lb-gWs" id="RNM-zJ-SSX"/>
+                        <outlet property="imageView" destination="LS7-8c-zpJ" id="q2n-87-eTY"/>
                         <outlet property="spinner" destination="LEl-ic-SBA" id="AGh-ov-tzJ"/>
                         <segue destination="KbD-6M-Utx" kind="show" identifier="PdfPreview" id="Pi0-rn-7L2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LOw-sl-HM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="448"/>
+            <point key="canvasLocation" x="1644" y="447.52623688155927"/>
         </scene>
         <!--Pdf Preview View Controller-->
         <scene sceneID="PWN-yP-pZL">

@@ -13,8 +13,7 @@ class PhotoToPdfViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var convertToPdfButton: UIButton!
-
-    var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
 
     private var pdfFilePath: String?
     private let a4 = CGSize(width: 595.2, height: 841.8)
@@ -95,19 +94,24 @@ class PhotoToPdfViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.imageView = UIImageView()
-        self.imageView.translatesAutoresizingMaskIntoConstraints = false
         self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = self.image
         self.view.addSubview(self.imageView)
         
         self.imageView.layer.borderColor = UIColor.black.cgColor
         self.imageView.layer.borderWidth = 2.0
+
         
-        self.imageView.widthAnchor.constraint(equalToConstant: self.a4.width * 0.5).isActive = true
-        self.imageView.heightAnchor.constraint(equalToConstant: self.a4.height * 0.5).isActive = true
-        self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        self.imageView.widthAnchor.constraint(equalToConstant: self.a4.width * 0.5).isActive = true
+//        self.imageView.heightAnchor.constraint(equalToConstant: self.a4.height * 0.5).isActive = true
+//        self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+//        self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        // Leading and trailing space constraints are removed at build time, so create a ratio
+        let widthConstraint = NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
+                                                 toItem: self.imageView, attribute: .height,
+                                                 multiplier: (self.a4.width/self.a4.height), constant: 1.0)
+        self.imageView.addConstraint(widthConstraint)
         
         self.view.sendSubview(toBack: self.imageView)
     }
