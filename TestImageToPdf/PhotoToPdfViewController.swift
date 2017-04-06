@@ -22,21 +22,35 @@ class PhotoToPdfViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func convertToPdfTapped(_ sender: UIButton) {
+    @IBAction func method1Tapped(_ sender: UIButton) {
         self.spinner.startAnimating()
-        self.performSelector(inBackground: #selector(convert), with: nil)
+        self.performSelector(inBackground: #selector(convert1), with: nil)
     }
-    
-    func convert() {
+
+    @IBAction func method2Tapped(_ sender: UIButton) {
+        self.spinner.startAnimating()
         self.pdfFilePath = nil
-        if let path = self.createPdf() {
-            self.pdfFilePath = path
-            self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
-        } else {
-            fatalError()
-        }
+        self.performSelector(inBackground: #selector(convert2), with: nil)
     }
-    
+
+    func convert1() {
+        guard let path = self.createPdf() else {
+            return
+        }
+
+        self.pdfFilePath = path
+        self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
+    }
+
+    func convert2() {
+        guard let path = self.createPdf2() else {
+            return
+        }
+
+        self.pdfFilePath = path
+        self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
+    }
+
     func navigate() {
         self.performSegue(withIdentifier: "PdfPreview", sender: nil)
     }
@@ -50,7 +64,7 @@ class PhotoToPdfViewController: UIViewController {
         let pdfData = NSMutableData()
         // A4, 72 dpi
         let page = CGRect(x: 0, y: 0, width: a4.width, height: a4.height)
-        
+
         // Points the pdf converter to the mutable data object and to the UIView to be converted
         UIGraphicsBeginPDFContextToData(pdfData, page, nil)
         UIGraphicsBeginPDFPage()
@@ -71,6 +85,46 @@ class PhotoToPdfViewController: UIViewController {
         
         UIGraphicsEndPDFContext()
         
+        let filename = "PhotoToPdfViewController"
+        let path = NSTemporaryDirectory() + filename + ".pdf"
+        pdfData.write(toFile: path, atomically: true)
+        return path
+    }
+
+    private func createPdf2() -> String? {
+        guard let image = self.imageView.image else {
+            return nil
+        }
+
+        guard let jpegData = UIImageJPEGRepresentation(image, 0.3) else {
+            return nil
+        }
+
+        let jpegCFData = jpegData as CFData
+        let dataProvider = CGDataProvider(data: jpegCFData)
+        let cgImage = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true,
+                              intent: CGColorRenderingIntent.defaultIntent)
+
+        let pdfData = NSMutableData()
+        let pageSize = CGRect(x: 0, y: 0, width: a4.width, height: a4.height)
+        UIGraphicsBeginPDFContextToData(pdfData, pageSize, nil)
+        UIGraphicsBeginPDFPage()
+
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        let imageSize = self.imageView.frame.size
+
+        context.translateBy(x: 0, y: imageSize.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+
+        let originY = (pageSize.height / 2) - (imageSize.height / 2)
+        let origin = CGPoint(x: 0.0, y: -originY)
+        let rect = CGRect(origin: origin, size: imageSize)
+        context.draw(cgImage!, in: rect)
+        UIGraphicsEndPDFContext()
+
         let filename = "PhotoToPdfViewController"
         let path = NSTemporaryDirectory() + filename + ".pdf"
         pdfData.write(toFile: path, atomically: true)

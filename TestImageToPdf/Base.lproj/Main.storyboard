@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLo-IS-9LX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLo-IS-9LX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,30 +67,42 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LEl-ic-SBA">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-lb-gWs">
-                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-ZH-5yP">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-lb-gWs">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Method 1"/>
+                                        <connections>
+                                            <action selector="method1Tapped:" destination="wqz-VZ-pbB" eventType="touchUpInside" id="v1q-ru-Ijk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-S4-57g">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="44"/>
+                                        <state key="normal" title="Method 2"/>
+                                        <connections>
+                                            <action selector="method2Tapped:" destination="wqz-VZ-pbB" eventType="touchUpInside" id="fsC-Kd-zVt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="js2-D1-ne2"/>
+                                    <constraint firstAttribute="height" constant="44" id="8j0-7U-SRP"/>
                                 </constraints>
-                                <state key="normal" title="Convert to PDF"/>
-                                <connections>
-                                    <action selector="convertToPdfTapped:" destination="wqz-VZ-pbB" eventType="touchUpInside" id="I8I-hC-AUu"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="AeJ-lb-gWs" secondAttribute="trailing" id="EOl-Ig-492"/>
+                            <constraint firstItem="Rg3-ZH-5yP" firstAttribute="top" secondItem="LS7-8c-zpJ" secondAttribute="bottom" id="8SN-m1-qjY"/>
                             <constraint firstItem="LS7-8c-zpJ" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" placeholder="YES" id="L6F-5W-h5X"/>
                             <constraint firstItem="LS7-8c-zpJ" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="W82-N0-DcD"/>
+                            <constraint firstAttribute="trailing" secondItem="Rg3-ZH-5yP" secondAttribute="trailing" id="Y1a-3I-eaH"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="aQi-2Q-qo8"/>
-                            <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="AeJ-lb-gWs" secondAttribute="bottom" id="bmF-rz-lc3"/>
-                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="top" secondItem="LS7-8c-zpJ" secondAttribute="bottom" id="dUn-EG-t9g"/>
                             <constraint firstItem="LS7-8c-zpJ" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="q9a-m8-hPd"/>
-                            <constraint firstItem="AeJ-lb-gWs" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="qoe-pz-6OX"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerY" secondItem="PpN-Hm-rjm" secondAttribute="centerY" id="rT9-Ey-BvT"/>
+                            <constraint firstItem="Rg3-ZH-5yP" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="saa-3h-iTE"/>
                             <constraint firstAttribute="trailing" secondItem="LS7-8c-zpJ" secondAttribute="trailing" placeholder="YES" id="uQv-nx-DbM"/>
+                            <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="Rg3-ZH-5yP" secondAttribute="bottom" id="ydO-Jn-kT6"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
