@@ -96,7 +96,10 @@ class PhotoToPdfViewController: UIViewController {
         self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = self.image
         self.view.addSubview(self.imageView)
-        
+
+        self.imageView.layer.borderColor = UIColor.black.cgColor
+        self.imageView.layer.borderWidth = 2
+
         // Leading and trailing space constraints are removed at build time, so create a ratio
         let widthConstraint = NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
                                                  toItem: self.imageView, attribute: .height,
@@ -107,6 +110,8 @@ class PhotoToPdfViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         self.spinner.stopAnimating()
     }
 

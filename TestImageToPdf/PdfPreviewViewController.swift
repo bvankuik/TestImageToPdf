@@ -53,6 +53,17 @@ class PdfPreviewViewController: UIViewController, WKNavigationDelegate {
         guard let path = self.pdfFilePath else {
             fatalError()
         }
+
+        var fileSize: UInt64 = 0
+
+        do {
+            let attr = try FileManager.default.attributesOfItem(atPath: path)
+            fileSize = attr[FileAttributeKey.size] as! UInt64
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        fileSize = fileSize / 1024
+        self.title = "File size: \(fileSize) KiB"
         
         let url = URL(fileURLWithPath: path)
         self.webView.loadRequest(URLRequest(url: url))
