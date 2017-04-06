@@ -66,8 +66,7 @@ class PhotoToPdfViewController: UIViewController {
         print("imageSize=\(imageSize), a4=\(a4)")
         print("horizontalScale=\(horizontalScale), verticalScale=\(verticalScale), scale=\(scale)")
         
-        let correction: CGFloat = 1.0
-        context.scaleBy(x: scale * correction, y: scale * correction)
+        context.scaleBy(x: scale, y: scale)
         self.imageView.layer.render(in: context)
         
         UIGraphicsEndPDFContext()
@@ -97,15 +96,6 @@ class PhotoToPdfViewController: UIViewController {
         self.imageView.contentMode = .scaleAspectFit
         self.imageView.image = self.image
         self.view.addSubview(self.imageView)
-        
-        self.imageView.layer.borderColor = UIColor.black.cgColor
-        self.imageView.layer.borderWidth = 2.0
-
-        
-//        self.imageView.widthAnchor.constraint(equalToConstant: self.a4.width * 0.5).isActive = true
-//        self.imageView.heightAnchor.constraint(equalToConstant: self.a4.height * 0.5).isActive = true
-//        self.imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-//        self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         // Leading and trailing space constraints are removed at build time, so create a ratio
         let widthConstraint = NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
