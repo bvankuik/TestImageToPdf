@@ -14,7 +14,7 @@
 		89024DCA1E7BEA400066F412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89024DC81E7BEA400066F412 /* LaunchScreen.storyboard */; };
 		89024DD21E7BEEA80066F412 /* PhotoToPdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */; };
 		89024DD41E7BEEF60066F412 /* PdfPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */; };
-		895BA0171E964DA900502F23 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 895BA0161E964DA900502F23 /* README.md */; };
+		895BA0191E97771700502F23 /* pexels-photo-88212.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 895BA0181E97771700502F23 /* pexels-photo-88212.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +28,7 @@
 		89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoToPdfViewController.swift; sourceTree = "<group>"; };
 		89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PdfPreviewViewController.swift; sourceTree = "<group>"; };
 		895BA0161E964DA900502F23 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		895BA0181E97771700502F23 /* pexels-photo-88212.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-photo-88212.jpeg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		89024DB31E7BEA400066F412 = {
 			isa = PBXGroup;
 			children = (
+				895BA0161E964DA900502F23 /* README.md */,
 				89024DBE1E7BEA400066F412 /* TestImageToPdf */,
 				89024DBD1E7BEA400066F412 /* Products */,
 			);
@@ -63,12 +65,12 @@
 				89024DBF1E7BEA400066F412 /* AppDelegate.swift */,
 				89024DC11E7BEA400066F412 /* ViewController.swift */,
 				89024DD11E7BEEA80066F412 /* PhotoToPdfViewController.swift */,
-				895BA0161E964DA900502F23 /* README.md */,
 				89024DD31E7BEEF60066F412 /* PdfPreviewViewController.swift */,
 				89024DC31E7BEA400066F412 /* Main.storyboard */,
 				89024DC61E7BEA400066F412 /* Assets.xcassets */,
 				89024DC81E7BEA400066F412 /* LaunchScreen.storyboard */,
 				89024DCB1E7BEA400066F412 /* Info.plist */,
+				895BA0181E97771700502F23 /* pexels-photo-88212.jpeg */,
 			);
 			path = TestImageToPdf;
 			sourceTree = "<group>";
@@ -134,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89024DCA1E7BEA400066F412 /* LaunchScreen.storyboard in Resources */,
+				895BA0191E97771700502F23 /* pexels-photo-88212.jpeg in Resources */,
 				89024DC71E7BEA400066F412 /* Assets.xcassets in Resources */,
 				89024DC51E7BEA400066F412 /* Main.storyboard in Resources */,
 			);
@@ -148,7 +151,6 @@
 			files = (
 				89024DD41E7BEEF60066F412 /* PdfPreviewViewController.swift in Sources */,
 				89024DC21E7BEA400066F412 /* ViewController.swift in Sources */,
-				895BA0171E964DA900502F23 /* README.md in Sources */,
 				89024DC01E7BEA400066F412 /* AppDelegate.swift in Sources */,
 				89024DD21E7BEEA80066F412 /* PhotoToPdfViewController.swift in Sources */,
 			);

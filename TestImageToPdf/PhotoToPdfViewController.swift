@@ -14,6 +14,7 @@ class PhotoToPdfViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var convertToPdfButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var containerView: UIView!
 
     private var pdfFilePath: String?
     private let a4 = CGSize(width: 595.2, height: 841.8)
@@ -58,7 +59,7 @@ class PhotoToPdfViewController: UIViewController {
     // MARK: - Private functions
     
     private func createPdf() -> String? {
-        let imageSize = self.imageView.frame.size
+        let imageSize = self.containerView.frame.size
         
         // Creates a mutable data object for updating with binary data, like a byte array
         let pdfData = NSMutableData()
@@ -81,7 +82,7 @@ class PhotoToPdfViewController: UIViewController {
         print("horizontalScale=\(horizontalScale), verticalScale=\(verticalScale), scale=\(scale)")
         
         context.scaleBy(x: scale, y: scale)
-        self.imageView.layer.render(in: context)
+        self.containerView.layer.render(in: context)
         
         UIGraphicsEndPDFContext()
         
@@ -91,12 +92,14 @@ class PhotoToPdfViewController: UIViewController {
         return path
     }
 
+    // Method from: http://stackoverflow.com/a/16132377/1085556
     private func createPdf2() -> String? {
         guard let image = self.imageView.image else {
             return nil
         }
 
-        guard let jpegData = UIImageJPEGRepresentation(image, 0.3) else {
+        let compression: CGFloat = 0.3
+        guard let jpegData = UIImageJPEGRepresentation(image, compression) else {
             return nil
         }
 
@@ -106,23 +109,22 @@ class PhotoToPdfViewController: UIViewController {
                               intent: CGColorRenderingIntent.defaultIntent)
 
         let pdfData = NSMutableData()
-        let pageSize = CGRect(x: 0, y: 0, width: a4.width, height: a4.height)
-        UIGraphicsBeginPDFContextToData(pdfData, pageSize, nil)
+        let page = CGRect(x: 0, y: 0, width: a4.width, height: a4.height)
+        UIGraphicsBeginPDFContextToData(pdfData, page, nil)
         UIGraphicsBeginPDFPage()
 
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
         }
 
-        let imageSize = self.imageView.frame.size
+        let horizontalScale = a4.width / image.size.width
+        let verticalScale = a4.height / image.size.height
+        let scale: CGFloat = min(horizontalScale, verticalScale)
 
-        context.translateBy(x: 0, y: imageSize.height)
-        context.scaleBy(x: 1.0, y: -1.0)
+        context.translateBy(x: 0, y: (a4.height / 2) + ((image.size.height * scale)/2))
+        context.scaleBy(x: scale, y: -scale)
 
-        let originY = (pageSize.height / 2) - (imageSize.height / 2)
-        let origin = CGPoint(x: 0.0, y: -originY)
-        let rect = CGRect(origin: origin, size: imageSize)
-        context.draw(cgImage!, in: rect)
+        context.draw(cgImage!, in: CGRect(origin: CGPoint(), size: image.size))
         UIGraphicsEndPDFContext()
 
         let filename = "PhotoToPdfViewController"
@@ -148,25 +150,24 @@ class PhotoToPdfViewController: UIViewController {
         super.viewDidLoad()
 
         self.imageView.contentMode = .scaleAspectFit
-        self.imageView.image = self.image
-        self.view.addSubview(self.imageView)
-
-        self.imageView.layer.borderColor = UIColor.black.cgColor
-        self.imageView.layer.borderWidth = 2
+        if let image = self.image {
+            self.imageView.image = image
+        }
 
         // Leading and trailing space constraints are removed at build time, so create a ratio
-        let widthConstraint = NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
-                                                 toItem: self.imageView, attribute: .height,
+        let widthConstraint = NSLayoutConstraint(item: self.containerView, attribute: .width, relatedBy: .equal,
+                                                 toItem: self.containerView, attribute: .height,
                                                  multiplier: (self.a4.width/self.a4.height), constant: 1.0)
-        self.imageView.addConstraint(widthConstraint)
-        
-        self.view.sendSubview(toBack: self.imageView)
+        self.containerView.addConstraint(widthConstraint)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         self.spinner.stopAnimating()
+
+        // Uncomment for superfast testing
+//        self.method2Tapped(UIButton())
     }
 
 }

@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="200" id="0Db-yR-XxA"/>
                                     <constraint firstAttribute="width" constant="200" id="OI0-JR-QUC"/>
                                 </constraints>
-                                <state key="normal" title="Start"/>
+                                <state key="normal" title="Take a picture"/>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Adj-6s-866"/>
                                 </connections>
@@ -61,9 +61,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LS7-8c-zpJ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEk-bL-tQa" userLabel="Container View">
+                                <rect key="frame" x="16" y="64" width="343" height="559"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-photo-88212.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="LS7-8c-zpJ">
+                                        <rect key="frame" x="-0.5" y="-1592.5" width="343" height="3744"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LS7-8c-zpJ" firstAttribute="centerX" secondItem="PEk-bL-tQa" secondAttribute="centerX" id="LRX-hB-MId"/>
+                                    <constraint firstItem="LS7-8c-zpJ" firstAttribute="width" secondItem="PEk-bL-tQa" secondAttribute="width" id="PkP-S9-Tdg"/>
+                                    <constraint firstItem="LS7-8c-zpJ" firstAttribute="centerY" secondItem="PEk-bL-tQa" secondAttribute="centerY" id="Vd2-7v-pLU"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LEl-ic-SBA">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
@@ -80,6 +92,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-S4-57g">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Method 2"/>
                                         <connections>
                                             <action selector="method2Tapped:" destination="wqz-VZ-pbB" eventType="touchUpInside" id="fsC-Kd-zVt"/>
@@ -91,23 +104,24 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Rg3-ZH-5yP" firstAttribute="top" secondItem="LS7-8c-zpJ" secondAttribute="bottom" id="8SN-m1-qjY"/>
-                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" placeholder="YES" id="L6F-5W-h5X"/>
-                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="W82-N0-DcD"/>
+                            <constraint firstItem="PEk-bL-tQa" firstAttribute="top" secondItem="q7U-8u-VMM" secondAttribute="bottom" id="F3W-iO-6Vf"/>
+                            <constraint firstItem="PEk-bL-tQa" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="FGb-xX-B1P"/>
+                            <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="Rg3-ZH-5yP" secondAttribute="bottom" id="KP1-DZ-XDP"/>
+                            <constraint firstItem="PEk-bL-tQa" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leadingMargin" placeholder="YES" id="Sh8-mw-yez"/>
                             <constraint firstAttribute="trailing" secondItem="Rg3-ZH-5yP" secondAttribute="trailing" id="Y1a-3I-eaH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PEk-bL-tQa" secondAttribute="trailing" placeholder="YES" id="aHd-C4-avZ"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="aQi-2Q-qo8"/>
-                            <constraint firstItem="LS7-8c-zpJ" firstAttribute="centerX" secondItem="PpN-Hm-rjm" secondAttribute="centerX" id="q9a-m8-hPd"/>
+                            <constraint firstItem="Rg3-ZH-5yP" firstAttribute="top" secondItem="PEk-bL-tQa" secondAttribute="bottom" id="k7G-va-BWE"/>
                             <constraint firstItem="LEl-ic-SBA" firstAttribute="centerY" secondItem="PpN-Hm-rjm" secondAttribute="centerY" id="rT9-Ey-BvT"/>
                             <constraint firstItem="Rg3-ZH-5yP" firstAttribute="leading" secondItem="PpN-Hm-rjm" secondAttribute="leading" id="saa-3h-iTE"/>
-                            <constraint firstAttribute="trailing" secondItem="LS7-8c-zpJ" secondAttribute="trailing" placeholder="YES" id="uQv-nx-DbM"/>
-                            <constraint firstItem="TRZ-QR-qRA" firstAttribute="top" secondItem="Rg3-ZH-5yP" secondAttribute="bottom" id="ydO-Jn-kT6"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="containerView" destination="PEk-bL-tQa" id="Z0Y-3u-Y4A"/>
                         <outlet property="convertToPdfButton" destination="AeJ-lb-gWs" id="RNM-zJ-SSX"/>
                         <outlet property="imageView" destination="LS7-8c-zpJ" id="q2n-87-eTY"/>
                         <outlet property="spinner" destination="LEl-ic-SBA" id="AGh-ov-tzJ"/>
@@ -173,4 +187,7 @@
             <point key="canvasLocation" x="65" y="451"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pexels-photo-88212.jpeg" width="5616" height="3744"/>
+    </resources>
 </document>

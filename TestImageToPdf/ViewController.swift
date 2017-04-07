@@ -74,5 +74,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Uncomment for superfast testing
+//        self.performSegue(withIdentifier: "PhotoToPdf", sender: nil)
+    }
+
 }
 
