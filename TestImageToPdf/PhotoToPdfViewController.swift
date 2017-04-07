@@ -35,7 +35,7 @@ class PhotoToPdfViewController: UIViewController {
     }
 
     func convert1() {
-        guard let path = self.createPdf() else {
+        guard let path = self.createPdfByRenderingContainerView() else {
             return
         }
 
@@ -44,7 +44,7 @@ class PhotoToPdfViewController: UIViewController {
     }
 
     func convert2() {
-        guard let path = self.createPdf2() else {
+        guard let path = self.createPdfAndManuallyLayoutImage() else {
             return
         }
 
@@ -58,7 +58,7 @@ class PhotoToPdfViewController: UIViewController {
     
     // MARK: - Private functions
     
-    private func createPdf() -> String? {
+    private func createPdfByRenderingContainerView() -> String? {
         let imageSize = self.containerView.frame.size
         
         // Creates a mutable data object for updating with binary data, like a byte array
@@ -93,7 +93,7 @@ class PhotoToPdfViewController: UIViewController {
     }
 
     // Method from: http://stackoverflow.com/a/16132377/1085556
-    private func createPdf2() -> String? {
+    private func createPdfAndManuallyLayoutImage() -> String? {
         guard let image = self.imageView.image else {
             return nil
         }
