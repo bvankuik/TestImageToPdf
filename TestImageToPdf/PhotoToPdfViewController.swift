@@ -34,7 +34,7 @@ class PhotoToPdfViewController: UIViewController {
         self.performSelector(inBackground: #selector(convert2), with: nil)
     }
 
-    func convert1() {
+    @objc func convert1() {
         guard let path = self.createPdfByRenderingContainerView() else {
             return
         }
@@ -43,7 +43,7 @@ class PhotoToPdfViewController: UIViewController {
         self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
     }
 
-    func convert2() {
+    @objc func convert2() {
         guard let path = self.createPdfAndManuallyLayoutImage() else {
             return
         }
@@ -52,7 +52,7 @@ class PhotoToPdfViewController: UIViewController {
         self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
     }
 
-    func navigate() {
+    @objc func navigate() {
         self.performSegue(withIdentifier: "PdfPreview", sender: nil)
     }
     
@@ -99,7 +99,7 @@ class PhotoToPdfViewController: UIViewController {
         }
 
         let compression: CGFloat = 0.3
-        guard let jpegData = UIImageJPEGRepresentation(image, compression) else {
+        guard let jpegData = image.jpegData(compressionQuality: compression) else {
             return nil
         }
 

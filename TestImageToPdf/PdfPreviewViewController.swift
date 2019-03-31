@@ -25,7 +25,7 @@ class PdfPreviewViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Actions
     
-    func share() {
+    @objc func share() {
         guard let path = self.pdfFilePath else {
             return
         }
@@ -35,7 +35,7 @@ class PdfPreviewViewController: UIViewController, WKNavigationDelegate {
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivityType.postToFacebook ]
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)

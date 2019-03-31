@@ -26,9 +26,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: - UIImagePickerControllerDelegate
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true) {
-            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            guard let image = info[.originalImage] as? UIImage else {
                 return
             }
             
@@ -82,4 +82,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 }
-
