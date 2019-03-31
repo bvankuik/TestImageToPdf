@@ -25,13 +25,14 @@ class PhotoToPdfViewController: UIViewController {
     
     @IBAction func method1Tapped(_ sender: UIButton) {
         self.spinner.startAnimating()
-        self.performSelector(inBackground: #selector(convert1), with: nil)
+        self.pdfFilePath = nil
+        self.convert1()
     }
 
     @IBAction func method2Tapped(_ sender: UIButton) {
         self.spinner.startAnimating()
         self.pdfFilePath = nil
-        self.performSelector(inBackground: #selector(convert2), with: nil)
+        self.convert2()
     }
 
     @objc func convert1() {
@@ -40,7 +41,7 @@ class PhotoToPdfViewController: UIViewController {
         }
 
         self.pdfFilePath = path
-        self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
+        self.navigate()
     }
 
     @objc func convert2() {
@@ -49,7 +50,7 @@ class PhotoToPdfViewController: UIViewController {
         }
 
         self.pdfFilePath = path
-        self.performSelector(onMainThread: #selector(navigate), with: nil, waitUntilDone: false)
+        self.navigate()
     }
 
     @objc func navigate() {
@@ -155,8 +156,8 @@ class PhotoToPdfViewController: UIViewController {
         }
 
         // Leading and trailing space constraints are removed at build time, so create a ratio
-        let widthConstraint = NSLayoutConstraint(item: self.containerView, attribute: .width, relatedBy: .equal,
-                                                 toItem: self.containerView, attribute: .height,
+        let widthConstraint = NSLayoutConstraint(item: self.containerView!, attribute: .width, relatedBy: .equal,
+                                                 toItem: self.containerView!, attribute: .height,
                                                  multiplier: (self.a4.width/self.a4.height), constant: 1.0)
         self.containerView.addConstraint(widthConstraint)
     }
